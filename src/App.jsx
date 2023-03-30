@@ -15,68 +15,39 @@ export default function App() {
 
 function Home() {
   return (
-    <div className='p-2'>
-      <h1 className=' font-black text-center mb-20 bg-landing text-transparent bg-clip-text text-responsive-sm'>
+    <div className='p-2 bg-[#fcfcfc]'>
+      <h1 className=' font-black text-center mb-12 bg-landing text-transparent bg-clip-text text-responsive-sm'>
         @danpoj / R3F
       </h1>
 
       <h2 className='text-5xl font-black text-slate-700 mb-6 bg-gradient-to-tr from-black to-transparent text-transparent bg-clip-text tracking-tight'>
         examples
       </h2>
-      <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2'>
-        <div className='rounded-xl overflow-hidden'>
-          <img src={shoePickerImage} className='' />
-          <div className='p-2'>
-            <Link to='/shoe-picker' className='font-mono font-bold text-lg'>
-              Shoe Picker
-            </Link>
-            <div className='text-xs'>
-              <pre>capture</pre>
-              <pre>color picker</pre>
-              <pre>valtio</pre>
-              <pre>leva</pre>
-            </div>
-          </div>
-        </div>
-        <div>
-          <img src={shoePickerImage} className='' />
+
+      <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
+        {Array.from({ length: 6 }, () => 0).map((_, i) => (
           <Link
             to='/shoe-picker'
-            className='font-mono font-bold text-lg tracking-tight'
+            key={i}
+            className='rounded-xl overflow-hidden bg-white shadow group hover:bg-gradient-to-r hover:from-cyan-200 hover:to-rose-200 transition-colors duration-300'
           >
-            Shoe Picker
+            <div className='overflow-hidden'>
+              <img
+                src={shoePickerImage}
+                className='group-hover:scale-105 transition duration-300'
+              />
+            </div>
+            <div className='p-2'>
+              <span className='font-mono font-bold text-lg'>Shoe Picker</span>
+              <div className='text-xs text-slate-500 font-bold flex gap-2 my-2'>
+                <pre className='bg-slate-100 p-1 rounded'>capture</pre>
+                <pre className='bg-slate-100 p-1 rounded'>color picker</pre>
+                <pre className='bg-slate-100 p-1 rounded'>valtio</pre>
+                <pre className='bg-slate-100 p-1 rounded'>leva</pre>
+              </div>
+            </div>
           </Link>
-          <div className='text-xs tracking-tighter'>
-            <pre>capture</pre>
-            <pre>color picker</pre>
-            <pre>valtio</pre>
-            <pre>leva</pre>
-          </div>
-        </div>
-        <div>
-          <img src={shoePickerImage} className='' />
-          <Link to='/shoe-picker' className='font-mono font-bold text-lg'>
-            Shoe Picker
-          </Link>
-          <div className='text-xs'>
-            <pre>capture</pre>
-            <pre>color picker</pre>
-            <pre>valtio</pre>
-            <pre>leva</pre>
-          </div>
-        </div>
-        <div>
-          <img src={shoePickerImage} className='' />
-          <Link to='/shoe-picker' className='font-mono font-bold text-lg'>
-            Shoe Picker
-          </Link>
-          <div className='text-xs'>
-            <pre>capture</pre>
-            <pre>color picker</pre>
-            <pre>valtio</pre>
-            <pre>leva</pre>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   )
