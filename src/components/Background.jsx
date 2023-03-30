@@ -14,10 +14,10 @@ const backgroundLists = [
   'lobby',
 ]
 
-export default function Background() {
+export default function Background({ defaultBackground }) {
   const { background } = useControls({
     background: {
-      value: 'warehouse',
+      value: defaultBackground,
       options: backgroundLists,
     },
   })

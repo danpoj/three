@@ -15,7 +15,8 @@ export default function ShoePicker() {
       <Canvas shadows camera={cameraSetting}>
         <Shoe />
 
-        <Background />
+        <Background defaultBackground='warehouse' />
+
         <OrbitControls maxPolarAngle={Math.PI / 2} />
         <ContactShadows position-y={-1} opacity={0.25} blur={1.5} scale={10} />
       </Canvas>

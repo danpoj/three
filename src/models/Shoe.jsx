@@ -6,11 +6,11 @@ import { state } from '../components/Picker'
 import { useCapture } from '../../hooks/useCapture'
 
 export default function Shoe(props) {
-  const { nodes, materials } = useGLTF('/shoe-draco.glb')
+  const { nodes, materials } = useGLTF('/models/shoe-draco.glb')
   const shoe = useRef()
   const snap = useSnapshot(state)
   const [hovered, set] = useState(null)
-  useCapture()
+  useCapture('shoe')
 
   useFrame((state) => {
     shoe.current.position.y = Math.sin(state.clock.elapsedTime / 3) / 10
@@ -27,9 +27,10 @@ export default function Shoe(props) {
         cursor
       )}'), auto`
       return () =>
-        (document.body.style.cursor = `url('data:image/svg+xml;base64,${btoa(
-          auto
-        )}'), auto`)
+        // (document.body.style.cursor = `url('data:image/svg+xml;base64,${btoa(
+        //   auto
+        // )}'), auto`)
+        (document.body.style.cursor = '')
     }
   }, [hovered])
 
@@ -122,4 +123,4 @@ export default function Shoe(props) {
   )
 }
 
-useGLTF.preload('/shoe-draco.glb')
+useGLTF.preload('/models/shoe-draco.glb')

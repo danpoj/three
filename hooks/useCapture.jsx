@@ -1,7 +1,7 @@
 import { useThree } from '@react-three/fiber'
 import { button, useControls } from 'leva'
 
-export function useCapture() {
+export function useCapture(fileName = 'myImage') {
   const { gl, scene, camera } = useThree()
 
   useControls({
@@ -11,7 +11,7 @@ export function useCapture() {
 
       const link = document.createElement('a')
       link.href = dataURL
-      link.download = 'shoe.png'
+      link.download = `${fileName}.png`
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)
