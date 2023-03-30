@@ -9,7 +9,7 @@ body,
   height: 100%;
 }
 
-.picker {
+.shoe-picker {
   position: absolute !important;
   top: 74px;
   left: 70px;
@@ -17,7 +17,7 @@ body,
   height: 90px !important;
 }
 
-h1 {
+.shoe-picker-h1 {
   position: absolute;
   top: 43px;
   left: 140px;

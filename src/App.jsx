@@ -1,50 +1,83 @@
-import { ContactShadows, OrbitControls } from '@react-three/drei'
-import { Canvas, useThree } from '@react-three/fiber'
-import { button, useControls } from 'leva'
-import { useRef } from 'react'
-import Background from './components/Background'
-import Light from './components/Light'
-import Picker from './components/Picker'
-import Shoe from './components/Shoe'
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import ShoePicker from './examples/ShoePicker'
+import shoePickerImage from '/landing-images/shoe-picker.png'
 
 export default function App() {
-  const canvas = useRef()
-
-  // const captureCanvas = useControls({
-  //   capture: button(() => {
-  //     const dataURL = canvas.current.toDataURL()
-
-  //     const link = document.createElement('a')
-  //     link.href = dataURL
-  //     link.download = 'shoe.png'
-  //     document.body.appendChild(link)
-  //     link.click()
-  //     document.body.removeChild(link)
-  //   }),
-  // })
-
   return (
-    <>
-      <Canvas
-        ref={canvas}
-        shadows
-        camera={{
-          fov: 45,
-          position: [-2, 1, -4],
-        }}
-        // gl={{
-        //   preserveDrawingBuffer: true,
-        // }}
-      >
-        <Shoe />
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/shoe-picker' element={<ShoePicker />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
 
-        <Background />
-        <OrbitControls maxPolarAngle={Math.PI / 2} />
-        <ContactShadows position-y={-1} opacity={0.25} blur={1.5} scale={10} />
-        <Light />
-      </Canvas>
+function Home() {
+  return (
+    <div className='p-2'>
+      <h1 className=' font-black text-center mb-20 bg-landing text-transparent bg-clip-text text-responsive-sm'>
+        @danpoj / R3F
+      </h1>
 
-      <Picker />
-    </>
+      <h2 className='text-5xl font-black text-slate-700 mb-6 bg-gradient-to-tr from-black to-transparent text-transparent bg-clip-text tracking-tight'>
+        examples
+      </h2>
+      <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2'>
+        <div className='rounded-xl overflow-hidden'>
+          <img src={shoePickerImage} className='' />
+          <div className='p-2'>
+            <Link to='/shoe-picker' className='font-mono font-bold text-lg'>
+              Shoe Picker
+            </Link>
+            <div className='text-xs'>
+              <pre>capture</pre>
+              <pre>color picker</pre>
+              <pre>valtio</pre>
+              <pre>leva</pre>
+            </div>
+          </div>
+        </div>
+        <div>
+          <img src={shoePickerImage} className='' />
+          <Link
+            to='/shoe-picker'
+            className='font-mono font-bold text-lg tracking-tight'
+          >
+            Shoe Picker
+          </Link>
+          <div className='text-xs tracking-tighter'>
+            <pre>capture</pre>
+            <pre>color picker</pre>
+            <pre>valtio</pre>
+            <pre>leva</pre>
+          </div>
+        </div>
+        <div>
+          <img src={shoePickerImage} className='' />
+          <Link to='/shoe-picker' className='font-mono font-bold text-lg'>
+            Shoe Picker
+          </Link>
+          <div className='text-xs'>
+            <pre>capture</pre>
+            <pre>color picker</pre>
+            <pre>valtio</pre>
+            <pre>leva</pre>
+          </div>
+        </div>
+        <div>
+          <img src={shoePickerImage} className='' />
+          <Link to='/shoe-picker' className='font-mono font-bold text-lg'>
+            Shoe Picker
+          </Link>
+          <div className='text-xs'>
+            <pre>capture</pre>
+            <pre>color picker</pre>
+            <pre>valtio</pre>
+            <pre>leva</pre>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
