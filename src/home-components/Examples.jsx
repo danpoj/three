@@ -10,10 +10,10 @@ export default function Examples() {
           to={path}
           className='rounded-xl overflow-hidden bg-white shadow group hover:bg-gradient-to-r hover:from-cyan-200 hover:to-rose-200 transition-colors duration-300'
         >
-          <div className='overflow-hidden'>
+          <div className='overflow-hidden h-80 sm:h-72 lg:h-60 bg-stone-100'>
             <img
               src={image}
-              className='group-hover:scale-105 transition duration-300 aspect-video object-cover'
+              className='group-hover:scale-105 transition duration-300  w-full h-full object-cover'
             />
           </div>
           <div className='p-2'>
