@@ -1,4 +1,3 @@
-import { AccumulativeShadows, RandomizedLight } from '@react-three/drei'
 import { useControls } from 'leva'
 
 export default function Light() {

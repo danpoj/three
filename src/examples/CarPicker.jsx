@@ -1,10 +1,14 @@
-import { ContactShadows, OrbitControls } from '@react-three/drei'
+import {
+  ContactShadows,
+  MeshReflectorMaterial,
+  MeshRefractionMaterial,
+  MeshTransmissionMaterial,
+  OrbitControls,
+} from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import Background from '../components/Background'
 import Light from '../components/Light'
-import Picker from '../components/Picker'
 import Car from '../models/Car'
-import Shoe from '../models/Shoe'
 
 const cameraSetting = {
   fov: 45,
