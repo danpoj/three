@@ -3,6 +3,7 @@ import carImage from '/landing-images/car.png'
 import pokerunImage from '/landing-images/pokerun.png'
 import physicsImage from '/landing-images/physics.png'
 import profileImage from '/landing-images/profile.png'
+import scrollImage from '/landing-images/scroll.png'
 
 export const examples = [
   {
@@ -46,14 +47,31 @@ export const examples = [
   {
     title: 'Scroll',
     path: '/scroll',
+    image: scrollImage,
+    tags: ['@drei/useScroll', '@drei/ScrollControls'],
+  },
+  {
+    title: 'Coming SOon...',
+    path: '/#',
     image: profileImage,
-    tags: [
-      '@react-three/csg',
-      'Lightformer',
-      'three/MathUtils',
-      'rapier',
-      '@rapier/InstancedRigidBodies',
-      'instancedMesh',
-    ],
+    tags: ['r3f', 'danpoj'],
+  },
+  {
+    title: 'Coming SOon...',
+    path: '/#',
+    image: profileImage,
+    tags: ['r3f', 'danpoj'],
+  },
+  {
+    title: 'Coming SOon...',
+    path: '/#',
+    image: profileImage,
+    tags: ['r3f', 'danpoj'],
+  },
+  {
+    title: 'Coming SOon...',
+    path: '/#',
+    image: profileImage,
+    tags: ['r3f', 'danpoj'],
   },
 ]

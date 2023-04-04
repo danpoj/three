@@ -25,17 +25,10 @@ export function Characters() {
   )
 
   useFrame((state) => {
-    console.log(state.camera.position)
     ref.current.position.z = -(scroll.offset - 0.5) * 40
   })
 
   const { actions } = useAnimations(animations, ref)
-
-  useEffect(() => {
-    document.addEventListener('scroll', () => {
-      console.log('scroll')
-    })
-  }, [])
 
   return (
     <group ref={ref}>
