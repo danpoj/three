@@ -2,6 +2,7 @@ import shoePickerImage from '/landing-images/shoe-picker.png'
 import carImage from '/landing-images/car.png'
 import pokerunImage from '/landing-images/pokerun.png'
 import physicsImage from '/landing-images/physics.png'
+import profileImage from '/landing-images/profile.png'
 
 export const examples = [
   {
@@ -33,6 +34,19 @@ export const examples = [
     title: 'Physics',
     path: '/physics',
     image: physicsImage,
+    tags: [
+      '@react-three/csg',
+      'Lightformer',
+      'three/MathUtils',
+      'rapier',
+      '@rapier/InstancedRigidBodies',
+      'instancedMesh',
+    ],
+  },
+  {
+    title: 'Scroll',
+    path: '/scroll',
+    image: profileImage,
     tags: [
       '@react-three/csg',
       'Lightformer',
