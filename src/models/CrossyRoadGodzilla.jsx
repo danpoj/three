@@ -24,24 +24,30 @@ export function Characters() {
     '/models/crossy_road_godzilla.glb'
   )
 
-  useFrame(() => {
-    console.log(scroll.offset)
-    ref.current.position.z = -(scroll.offset - 0.5) * 20
+  useFrame((state) => {
+    console.log(state.camera.position)
+    ref.current.position.z = -(scroll.offset - 0.5) * 40
   })
 
   const { actions } = useAnimations(animations, ref)
 
+  useEffect(() => {
+    document.addEventListener('scroll', () => {
+      console.log('scroll')
+    })
+  }, [])
+
   return (
     <group ref={ref}>
-      {Array(20)
+      {Array(40)
         .fill(0)
         .map((_, i) => (
           <CrossyRoadGodzilla
             key={i}
             position={[
-              (Math.random() - 0.5) * 20,
+              (Math.random() - 0.5) * 40,
               0,
-              (Math.random() - 0.5) * 20,
+              (Math.random() - 0.5) * 40 + 10,
             ]}
           />
         ))}

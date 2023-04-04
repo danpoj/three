@@ -14,8 +14,8 @@ export default function ScrollAnimation() {
       <Canvas
         shadows
         camera={{
-          position: [12, 14, -14],
-          // fov: 55,
+          position: [-12, 3, -10.7],
+          fov: 55,
         }}
       >
         <Perf position='top-left' />
@@ -48,7 +48,7 @@ export default function ScrollAnimation() {
           <meshStandardMaterial />
         </mesh>
 
-        <ScrollControls pages={10} damping={0}>
+        <ScrollControls pages={10} damping={0.1}>
           <Characters />
         </ScrollControls>
       </Canvas>
