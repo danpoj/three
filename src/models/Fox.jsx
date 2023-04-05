@@ -15,10 +15,6 @@ export default function Fox(props) {
   const { nodes, materials, animations } = useGLTF('/models/fox.glb')
   const { actions } = useAnimations(animations, fox)
 
-  useFrame((state) => {
-    console.log(state.camera.position)
-  })
-
   useEffect(() => {
     const action = actions.Animation
 

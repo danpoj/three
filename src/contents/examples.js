@@ -56,22 +56,4 @@ export const examples = [
     image: profileImage,
     tags: ['r3f', 'danpoj'],
   },
-  {
-    title: 'Coming SOon...',
-    path: '/#',
-    image: profileImage,
-    tags: ['r3f', 'danpoj'],
-  },
-  {
-    title: 'Coming SOon...',
-    path: '/#',
-    image: profileImage,
-    tags: ['r3f', 'danpoj'],
-  },
-  {
-    title: 'Coming SOon...',
-    path: '/#',
-    image: profileImage,
-    tags: ['r3f', 'danpoj'],
-  },
 ]
