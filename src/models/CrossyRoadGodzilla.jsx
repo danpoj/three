@@ -13,7 +13,6 @@ import {
   Merged,
   Clone,
   useScroll,
-  ScrollControls,
 } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 

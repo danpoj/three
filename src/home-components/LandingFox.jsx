@@ -3,43 +3,49 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Suspense, useRef } from 'react'
 import Fox from '../models/Fox'
 
+const cameraConfig = {
+  position: [1.439, 0.859, 4.44],
+}
+
 export default function LandingFox() {
   return (
-    <div className='flex justify-end'>
-      <div className='w-[80%] aspect-video'>
-        <Canvas
-          camera={{
-            position: [1.439, 0.859, 4.44],
-          }}
-        >
-          <Suspense fallback={<PlaceHolder />}>
-            <Environment preset='lobby'>
-              <Lightformer
-                intensity={20}
-                position={[0, 0, 3]}
-                rotation={[0, Math.PI, 0]}
-              />
-            </Environment>
-            <Fox />
-            <Box />
-          </Suspense>
+    <CanvasContainer>
+      <Canvas camera={cameraConfig}>
+        <Suspense fallback={<PlaceHolder />}>
+          <Environment preset='lobby'>
+            <Lightformer
+              intensity={20}
+              position={[0, 0, 3]}
+              rotation={[0, Math.PI, 0]}
+            />
+          </Environment>
+          <Fox />
+          <RotatingBox />
+        </Suspense>
 
-          <Sparkles
-            size={10}
-            count={60}
-            scale={10}
-            position-x={1.6}
-            speed={0.5}
-            opacity={0.8}
-            color={`hsl(${Math.random() * 360},100%,90%)`}
-          />
-        </Canvas>
-      </div>
+        <Sparkles
+          size={10}
+          count={60}
+          scale={10}
+          position-x={1.6}
+          speed={0.5}
+          opacity={0.8}
+          color={`hsl(${Math.random() * 360},100%,90%)`}
+        />
+      </Canvas>
+    </CanvasContainer>
+  )
+}
+
+function CanvasContainer({ children }) {
+  return (
+    <div className='flex justify-end'>
+      <div className='w-[80%] aspect-video'>{children}</div>
     </div>
   )
 }
 
-function Box() {
+function RotatingBox() {
   const box = useRef()
 
   useFrame((state, delta) => {
