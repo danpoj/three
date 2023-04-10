@@ -52,7 +52,7 @@ export const examples = [
   },
   {
     title: 'Coming SOon...',
-    path: '/#',
+    path: '/player',
     image: profileImage,
     tags: ['r3f', 'danpoj'],
   },

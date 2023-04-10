@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import CarPicker from './examples/CarPicker'
 import PhysicsCanvas from './examples/Physics'
+import Player from './examples/Player'
 import ScrollAnimation from './examples/ScrollAnimation'
 import ShoePicker from './examples/ShoePicker'
 
@@ -15,6 +16,7 @@ export default function App() {
         <Route path='/car-picker' element={<CarPicker />} />
         <Route path='/physics' element={<PhysicsCanvas />} />
         <Route path='/scroll' element={<ScrollAnimation />} />
+        <Route path='/player' element={<Player />} />
       </Routes>
     </BrowserRouter>
   )
