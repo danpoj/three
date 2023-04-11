@@ -137,7 +137,7 @@ tick()
 
 > ⚠️ 컴퓨터마다 다른 framerate 문제
 
-144fps의 컴퓨터는 1초마다 tick을 144번 실행하지만, 60fps의 컴퓨터는 60번 실행하게된다. `mesh.position.y += 1`처럼 하드 코딩하게되면 144fps의 컴퓨터에선 y의 위치가 144, 60fps의 컴퓨터에선 y의 위치가 60이 되는 문제가있다.
+144fps의 컴퓨터는 1초마다 tick을 144번 실행하지만, 60fps의 컴퓨터는 60번 실행하게된다. `mesh.position.y += 1`처럼 하드코딩하게되면 144fps의 컴퓨터에선 1초후 y의 위치가 144, 60fps의 컴퓨터에선 1초후 y의 위치가 60이 되는 문제가있다.
 
 ### solution 1
 
@@ -171,6 +171,133 @@ const tick = () => {
 }
 
 tick()
+```
+
+## Camera
+
+### `PerspectiveCamera(fov: Number, aspect: Number, near: Number, far: Number)` default 50, 1, 0.1, 2000
+
+1. fov: 카메라의 수직 각도
+2. aspect: width / height
+3. near / far: near ~ far 범위 내를 렌더링한다 (near나 far값을 극한으로 크거나 작게 만들면 성능에 영향을 줄 뿐만아니라, [z-fighting](https://learn.microsoft.com/en-us/azure/remote-rendering/overview/features/z-fighting-mitigation)이 발생할 수 있으니 극한값은 피하는 것이 좋다.)
+
+- 사람의 눈으로 보는 시야
+- 원근감
+- parameters중에 하나라도 바뀌면 `updateProjectionMatrix` 메소드를 호출해야 변경사항이 적용된다
+- Camera 클래스를 상속받는다. (Camera는 추상클래스)
+
+### 기타 카메라들
+
+[OrthographicCamera](https://threejs.org/docs/index.html?q=camera#api/en/cameras/OrthographicCamera)  
+[StereoCamera](https://threejs.org/docs/index.html?q=camera#api/en/cameras/StereoCamera)  
+[CubeCamera](https://threejs.org/docs/index.html?q=camera#api/en/cameras/CubeCamera)  
+[ArrayCamera](https://threejs.org/docs/index.html?q=camera#api/en/cameras/ArrayCamera)
+
+## Fullscreen
+
+### css
+
+```css
+* {
+  // remove browser default margin, padding
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  // remove scrolling
+  overflow: hidden;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  // remove blue outline when drag and dropping canvas
+  outline: none;
+}
+```
+
+### double click to fullscreen mode
+
+```js
+// default
+window.addEventListener('dblclick', () => {
+  if (!document.fullscreenElement) {
+    canvas.requestFullscreen()
+  } else {
+    document.exitFullscreen()
+  }
+})
+
+// for safari browser
+window.addEventListener('dblclick', () => {
+  const fullscreenElement =
+    document.fullscreenElement || document.webkitFullscreenElement
+
+  if (!fullscreenElement) {
+    if (canvas.requestFullscreen) {
+      canvas.requestFullscreen()
+    } else if (canvas.webkitRequestFullscreen) {
+      canvas.webkitRequestFullscreen()
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen()
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen()
+    }
+  }
+})
+```
+
+## limit pixel ratio
+
+![pixel ratio image](https://mblogthumb-phinf.pstatic.net/MjAxOTA5MTlfMTk5/MDAxNTY4ODcxOTM5ODU0.bA8bReQsPxbF-o68DqdRrsk45qdXaO5J4rOMVOmIafkg.6kOpkvX8judeh9ec0NDkPcyCztrSJMn-c4Adkv7n3DMg.PNG.eirene100999/5.2_PPI.png?type=w800)
+<img width="300" alt="pixel-ratio: 1" src="https://user-images.githubusercontent.com/88086373/231124353-74f66c03-91cd-412b-ad00-28c6f16354eb.png">
+<img width="300" alt="pixel-ratio: 2" src="https://user-images.githubusercontent.com/88086373/231124361-33dd1bd9-abd5-4c5a-8477-8abd3090a391.png">
+
+- 왼쪽: 1ppi (모서리부분 계단같은 aliasing)
+- 오른쪽: 2ppi
+- 높을수록 더많은 픽셀을 나타내지만, 그만큼 컴퓨터 자원을 소모하므로 웬만해선 2ppi가 적당하다.
+
+```js
+const renderer = new THREE.WebGLRenderer({
+  canvas: canvas,
+})
+
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+```
+
+## Geometry
+
+- vertice들의 집합
+- 3개의 vertice로 1개의 삼각형 face를 만든다.
+- 각각의 vertice들로 하나의 particle을 만들수도 있다.
+
+[BufferGeometry](https://threejs.org/docs/index.html?q=buffergeo#api/en/core/BufferGeometry) + [Float32Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array)로 vertice들의 위치를 특정하고 삼각형 face들을 만들어 볼 수 있다.
+
+three.js는 간단한 모양의 여러 기본 geometry들을 제공한다. 복잡한 모양인 경우에는 blender와 같은 모델링 툴을 이용해 만들자!
+
+```js
+const geometry = new THREE.BufferGeometry()
+// create a simple square shape. We duplicate the top left and bottom right
+// vertices because each vertex needs to appear once per triangle.
+const vertices = new Float32Array([
+  -1.0, -1.0, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0, 1.0,
+
+  1.0, 1.0, 1.0, -1.0, 1.0, 1.0, -1.0, -1.0, 1.0,
+])
+
+// itemSize = 3 because there are 3 values (components) per vertex
+geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3))
+const material = new THREE.MeshBasicMaterial({
+  color: 0xff0000,
+  wireframe: true,
+})
+const mesh = new THREE.Mesh(geometry, material)
 ```
 
 </br></br></br></br></br></br></br></br></br></br></br></br></br></br>
