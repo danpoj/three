@@ -175,7 +175,7 @@ tick()
 
 ## Camera
 
-### `PerspectiveCamera(fov: Number, aspect: Number, near: Number, far: Number)` default 50, 1, 0.1, 2000
+### `PerspectiveCamera(fov: Number, aspect: Number, near: Number, far: Number)` default `50, 1, 0.1, 2000`
 
 1. fov: 카메라의 수직 각도
 2. aspect: width / height
@@ -300,6 +300,72 @@ const material = new THREE.MeshBasicMaterial({
 const mesh = new THREE.Mesh(geometry, material)
 ```
 
+## Texture
+
+- geometry를 감싸는 이미지
+
+### texture 종류
+
+<img height="200" alt="color" src="https://threejs-journey.com/assets/lessons/11/000.jpg">
+<img height="200" alt="alpha" src="https://threejs-journey.com/assets/lessons/11/001.jpg">
+<img height="200" alt="height" src="https://threejs-journey.com/assets/lessons/11/002.png">
+<img height="200" alt="normal" src="https://threejs-journey.com/assets/lessons/11/003.jpg">
+<img height="200" alt="ambient occlusion" src="https://threejs-journey.com/assets/lessons/11/004.jpg">
+<img height="200" alt="metalness" src="https://threejs-journey.com/assets/lessons/11/005.jpg">
+<img height="200" alt="roughness" src="https://threejs-journey.com/assets/lessons/11/006.jpg">
+
+> 왼쪽부터 차례대로 `color` `alpha` `height` `normal` `ambient occlusion` `metalness` `roughness`
+
+1. `color`: 픽셀마다 색을 입혀주는 기본 texture
+2. `alpha`: 흰색은 visible, 검은색은 invisible
+3. `height`: vertice들을 입체감있게 위아래로 움직여준다. (subdivision이 충분해야 함)
+4. `normal`: 각각의 vertice의 face 마다 방향을 나타내는 tangent space를 만들어준다. 빛과 관련있다. (subdivision이 필요하지않아 퍼포먼스에 좋다)
+5. `ambient occlusion`: 그림자를 대비시켜준다.
+
+### texture 적용하기
+
+- `TextureLoader`
+- `LoadingManager`
+
+### `Texture` class basic properties
+
+```js
+// .repeat
+const texture = textureLoader.load('/textures/door/color.jpg')
+texture.repeat.x = 2
+texture.repeat.y = 3
+
+// .wrapS .wrapT
+texture.wrapS = THREE.RepeatWrapping
+texture.wrapT = THREE.RepeatWrapping
+
+// .offset
+texture.offset.x = 0.5
+texture.offset.y = 0.5
+
+// .rotation
+texture.rotation = Math.PI * 0.25
+
+// .center
+texture.center.x = 0.5
+texture.center.y = 0.5
+
+// Mipmapping
+
+/*
+THREE.NearestFilter
+THREE.LinearFilter
+THREE.NearestMipmapNearestFilter
+THREE.NearestMipmapLinearFilter
+THREE.LinearMipmapNearestFilter
+THREE.LinearMipmapLinearFilter
+*/
+
+texture.generateMipmaps = false
+texture.minFilter = THREE.NearestFilter
+texture.magFilter = THREE.NearestFilter
+```
+
 </br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 
 ## Canvas capture
@@ -348,6 +414,19 @@ const dataURL = gl.domElement.toDataURL()
 </br>
 </br>
 
-## References
+## tools
+
+[3Dtextures](https://3dtextures.me/)  
+[poliigon](https://www.poliigon.com/)  
+[adobe / substance3d](https://www.adobe.com/products/substance3d-designer.html)  
+[Tiny PNG / image compression](https://tinypng.com/)  
+[matcaps github](https://github.com/nidorx/matcaps)  
+[polyhaven / environment HDRI](https://polyhaven.com/)  
+[HDRI -> Cubemap Images](https://matheowis.github.io/HDRI-to-CubeMap/)
+
+## articles
+
+[Physically-Based Rendering, And You Can Too!](https://marmoset.co/posts/physically-based-rendering-and-you-can-too/)  
+[Basic Theory of Physically-Based Rendering](https://marmoset.co/posts/basic-theory-of-physically-based-rendering/)
 
 [r3f showcase](https://docs.pmnd.rs/react-three-fiber/getting-started/examples)
