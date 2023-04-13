@@ -306,13 +306,13 @@ const mesh = new THREE.Mesh(geometry, material)
 
 ### texture 종류
 
-<img height="200" alt="color" src="https://threejs-journey.com/assets/lessons/11/000.jpg">
-<img height="200" alt="alpha" src="https://threejs-journey.com/assets/lessons/11/001.jpg">
-<img height="200" alt="height" src="https://threejs-journey.com/assets/lessons/11/002.png">
-<img height="200" alt="normal" src="https://threejs-journey.com/assets/lessons/11/003.jpg">
-<img height="200" alt="ambient occlusion" src="https://threejs-journey.com/assets/lessons/11/004.jpg">
-<img height="200" alt="metalness" src="https://threejs-journey.com/assets/lessons/11/005.jpg">
-<img height="200" alt="roughness" src="https://threejs-journey.com/assets/lessons/11/006.jpg">
+<img height="200" width="200" alt="color" src="https://threejs-journey.com/assets/lessons/11/000.jpg">
+<img height="200" width="200" alt="alpha" src="https://threejs-journey.com/assets/lessons/11/001.jpg">
+<img height="200" width="200" alt="height" src="https://threejs-journey.com/assets/lessons/11/002.png">
+<img height="200" width="200" alt="normal" src="https://threejs-journey.com/assets/lessons/11/003.jpg">
+<img height="200" width="200" alt="ambient occlusion" src="https://threejs-journey.com/assets/lessons/11/004.jpg">
+<img height="200" width="200" alt="metalness" src="https://threejs-journey.com/assets/lessons/11/005.jpg">
+<img height="200" width="200" alt="roughness" src="https://threejs-journey.com/assets/lessons/11/006.jpg">
 
 > 왼쪽부터 차례대로 `color` `alpha` `height` `normal` `ambient occlusion` `metalness` `roughness`
 
