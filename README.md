@@ -425,36 +425,7 @@ const dataURL = gl.domElement.toDataURL()
 </br>
 </br>
 
-## `tmax Metaverse`
 
-- 정해진 것만 하는 것이 아니라, 원하고 상상하는 것을 모두 할 수 있는 세상 (현실과 가상이 완전히 융합된 세상)
-- 가상에서의 활동이 현실에 직접적인 영향을 주게되는것
-- 클라우드 기반의 메타버스: social, game, education등 각 분야로 나누어져서 설계된 메타버스에서 더 나아가 모든 영역간의 연계, 통합하고 소비자가 원하는 만큼 확장 가능(super app)
-- 일상에서 겪는 문제들은 분야를 넘나들고 있기 때문에 독립적으로 운영되던 데이터들을 융합하고 강화한 metaverse가 필요하다. 그게 tmax metaverse의 super app 이다.
-- 데이터를 통합하고 강화하는 과정은 진화된 시스템 레이어가 뒷받침 돼야한다. tmax는 cloud, database, os, ai와 같은 기술을 모두 다루므로 차별화된 조건을 가지고있다.
-- 2d요소를 3d로 바꿔주는 meta engine (3d graphic library)
-- 유저가 사용하는 metaverse studio
-- tmax는 os부터 app까지 super app 기반의 기반이 있다.
-- vision AI를 기반으로한 Digital Human, Digital Space
-- Digital Human: 내 사진을 기반으로 3d Avatar 제작
-- Digital Space: 360도 영상 기반의 실사를 활용해서 3d 공간을 생성해준다.
-
-- 3D
-- VR
-- AR
-- Avatar / Interaction / Recognition
-- Digital Space
-
-1. Life Logging (SNS like instagram, facebook, twitter)
-2. 거울세계: 현실의 내 모습을 그대로 (Zoom)
-3. 가상세계: 온라인게임
-4. 증강현실세계: 현실 세계에 3d 이미지 및 영상을 투사 (AR: pokemon go)
-
-### 제품
-
-- SCON: 3D 콘텐츠 제작 studio
-- 민트라: 인터렉티브 콘텐츠, 게임 제작 스튜디오, 유저 간 커뮤니케이션
-- 티바인: 콘텐츠뿐 아니라 새로운 경제와 직업을 꾸려나가는 플랫폼
 
 ## tools
 
